@@ -23,6 +23,7 @@
 		"typescript": "^4.9.4"
 	},
 	"dependencies": {
+		"deepslate": "^0.25.1",
 		"open": "^8.4.0",
 		"winston": "^3.8.2",
 		"zod": "^3.20.6"

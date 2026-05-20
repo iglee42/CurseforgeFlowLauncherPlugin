@@ -1,12 +1,12 @@
 {
-  "ID": "890a6a95-5d36-4fab-bce1-b4c3f1239098",
-  "ActionKeyword": "npm",
-  "Name": "Search NPM",
-  "Description": "Search NPM packages",
-  "Author": "Joël Kuijper",
-  "Version": "0.0.2",
+  "ID": "a0b31f6b-01a0-4255-a815-258310f686ce",
+  "ActionKeyword": "cf",
+  "Name": "Curseforge Modpack Launcher",
+  "Description": "Launch Modpack from Curseforge launcher",
+  "Author": "iglee42",
+  "Version": "1.0.0",
   "Language": "TypeScript",
   "ExecuteFileName": "./dist/main.js",
-  "Website": "https://github.com/Joehoel/flow-launcher-plugin-template-node",
-  "IcoPath": "./assets/npm.png"
+  "Website": "https://iglee.fr",
+  "IcoPath": "./assets/curseforge-logo.png"
 }

@@ -1,0 +1,9 @@
+body:
+  - type: inputWithFolderBtn
+    attributes:
+      name: cfFolder
+      label: Curseforge Folder
+      description: >-
+        The folder where you have installed Minecraft with Curseforge. This is
+        required to find the modpacks folders and launch them.
+      defaultValue: '%USERPROFILE%\curseforge\minecraft'
