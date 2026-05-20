@@ -32,3 +32,5 @@ jobs:
               with:
                   files: "CurseforgeLauncher-${{steps.version.outputs.prop}}.zip"
                   tag_name: "v${{steps.version.outputs.prop}}"
+              env:
+                  GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
