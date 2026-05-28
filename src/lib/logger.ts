@@ -3,7 +3,7 @@
 import { createLogger, format, transports } from "winston";
 
 const logger = createLogger({
-  level: "info",
+  level: "debug",
   format: format.combine(
     format.timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
     // Format the metadata object

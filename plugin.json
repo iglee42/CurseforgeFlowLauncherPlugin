@@ -4,7 +4,7 @@
   "Name": "Curseforge Modpack Launcher",
   "Description": "Launch Modpack from Curseforge launcher",
   "Author": "iglee42",
-  "Version": "1.0.0",
+  "Version": "1.0.1",
   "Language": "TypeScript",
   "ExecuteFileName": "./dist/main.js",
   "Website": "https://iglee.fr",

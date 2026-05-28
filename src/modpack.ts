@@ -70,6 +70,8 @@ export function loadModpacks(cfFolder?: string, query?: string): Modpack[] {
         return [];
     }
 
+    logger.debug(`Loading modpacks from folder: ${cfFolder} with query: "${query}"`);
+
     const root = expandEnv(cfFolder);
     const instancesFolder = join(root, "Instances");
 
@@ -78,6 +80,7 @@ export function loadModpacks(cfFolder?: string, query?: string): Modpack[] {
     }
 
     const entries = readdirSync(instancesFolder, { withFileTypes: true });
+    logger.debug(`Found ${entries.length} entries in Instances folder`);
     const folders = entries.filter(entry => entry.isDirectory() && (!query || entry.name.toLowerCase().includes(query.toLowerCase()))).map(entry => entry.name);
 
     return folders

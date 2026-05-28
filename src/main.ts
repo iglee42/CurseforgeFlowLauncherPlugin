@@ -2,6 +2,7 @@ import open from "open";
 import { z } from "zod";
 import { Flow, JSONRPCResponse } from "./lib/flow";
 import { formatTimePlayed, loadModpacks, Modpack } from "./modpack";
+import logger from "./lib/logger";
 
 type Settings = {
 	cfFolder?: string;
@@ -20,6 +21,18 @@ flow.on("query", (params) => {
 	const modpacks = loadModpacks(flow.settings.cfFolder, query);
 	const settings = flow.settings;
 
+	logger.debug(`Query received: "${queryRaw}", parsed as "${query}". Found ${modpacks.length} modpacks matching the query.`);
+
+	if (!modpacks || modpacks.length === 0) {
+		logger.debug("No modpacks found matching the query.");
+		flow.showResult({
+			title: "No modpacks found",
+			subtitle: "Please check your CurseForge folder path and try again.",
+			iconPath: "assets/curseforge-logo.png",
+			method: "Flow.Launcher.OpenSettingDialog"
+		} as JSONRPCResponse<Events>);
+		return;
+	}
 
 	for (const modpack of modpacks) {
 		if (!modpack.name.toLowerCase().startsWith(query)) {
