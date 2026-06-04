@@ -1,7 +1,34 @@
 import { existsSync, readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import logger from "./lib/logger";
-import { NbtFile, NbtType } from "../node_modules/deepslate";
+
+type NbtFileLike = {
+    root: {
+        getList: (name: string, type: number) => Array<{
+            getString: (name: string) => string;
+        }>;
+    };
+};
+
+type DeepslateCjs = {
+    NbtFile: {
+        read: (bytes: Uint8Array, options?: { compression?: "none" | "zlib" | "gzip" }) => NbtFileLike;
+    };
+    NbtType: {
+        Compound: number;
+    };
+};
+
+let deepslateCache: DeepslateCjs | null = null;
+
+function getDeepslate(): DeepslateCjs {
+    if (!deepslateCache) {
+        // eslint-disable-next-line @typescript-eslint/no-var-requires
+        deepslateCache = require("../node_modules/deepslate/dist/deepslate.umd.cjs") as DeepslateCjs;
+    }
+
+    return deepslateCache;
+}
 
 type MinecraftInstance = {
     guid: string;
@@ -214,6 +241,7 @@ function getMultiplayerServerIcon(instanceFolder: string, worldId: string): stri
             return null;
         }
 
+        const { NbtType } = getDeepslate();
         const servers = file.root.getList("servers", NbtType.Compound);
         const targetId = normalizeServerId(worldId);
 
@@ -239,7 +267,9 @@ function getMultiplayerServerIcon(instanceFolder: string, worldId: string): stri
     }
 }
 
-function tryReadNbt(bytes: Uint8Array): NbtFile | null {
+function tryReadNbt(bytes: Uint8Array): NbtFileLike | null {
+    const { NbtFile } = getDeepslate();
+
     try {
         return NbtFile.read(bytes);
     } catch {
