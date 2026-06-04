@@ -1,7 +1,7 @@
 import { existsSync, readdirSync, readFileSync } from "fs";
 import { join } from "path";
 import logger from "./lib/logger";
-import { NbtFile, NbtType } from "deepslate";
+import { NbtFile, NbtType } from "../node_modules/deepslate";
 
 type MinecraftInstance = {
     guid: string;

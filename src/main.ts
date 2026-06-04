@@ -1,5 +1,5 @@
-import open from "open";
-import { z } from "zod";
+import open from "../node_modules/open";
+import { z } from "../node_modules/zod";
 import { Flow, JSONRPCResponse } from "./lib/flow";
 import { formatTimePlayed, loadModpacks, Modpack } from "./modpack";
 import logger from "./lib/logger";

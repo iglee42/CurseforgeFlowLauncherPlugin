@@ -1,6 +1,6 @@
 {
-	"name": "flow-launcher-plugin-template-node",
-	"description": "Flow Launcher plugin template for Node.js",
+	"name": "curseforge-flow-launcher-plugin",
+	"description": "A Flow Launcher plugin to launch modpacks from the Curseforge launcher",
 	"main": "./dist/main.js",
 	"scripts": {
 		"dev": "tsc --watch",
